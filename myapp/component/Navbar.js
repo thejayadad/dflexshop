@@ -18,14 +18,16 @@ const Navbar = () => {
      Donut Shop
     </Link>
   </div>
-  <div className="flex-none">
+  <div className="flex">
 
-    <ul className="menu menu-horizontal text-small">
+    <ul className="menu menu-horizontal text-small flex">
 
         {NavLinks.map((link) => (
+            <li>
             <Link className='btn btn-sm mr-3' href={link.href} key={link.text}>
                 {link.text}
             </Link>
+            </li>
         ))}
         {
 
