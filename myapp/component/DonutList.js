@@ -2,23 +2,29 @@
 
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import DonutCard from "./DonutCard";
 import Link from "next/link";
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
+
+
 
 const DonutList = () => {
     const { data: session } = useSession();
     const [allDonuts, setAllDonuts] = useState([]);
+ 
+
 
     useEffect(() => {
-        const fetchDonuts = async () => {
-          const response = await fetch(`/api/donut/`);
-          const data = await response.json();
-    
+      const fetchDonuts = async () => {
+        const response = await fetch(`/api/donut/`);
+        const data = await response.json();
+  
           setAllDonuts(data);
-        };
-    
-        fetchDonuts();
-      }, []);
+      };
+  
+      fetchDonuts();
+    }, [session]);
+  
+
 
   return (
     <section>

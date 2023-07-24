@@ -1,7 +1,45 @@
-import Link from 'next/link'
-import React from 'react'
+'use client'
 
-const DonutCard = ({title, desc, imageUrl, email, authorId, _id}) => {
+import Image from 'next/image'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
+import { useSession } from 'next-auth/react'
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai'
+
+const DonutCard = ({title, desc, imageUrl, email, authorId, _id, likes}) => {
+  const { data: session } = useSession()
+  const [isLiked, setIsLiked] = useState(false)
+  const [donutLikes, setDonutLikes] = useState(0)
+
+  useEffect(() => {
+    session && likes && setIsLiked(likes.includes(session?.user?._id))
+    session && likes && setDonutLikes(likes.length)
+  }, [likes, session])
+
+  
+  const handleLike = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/donut/${_id}/like`, {
+        headers: {
+          'Authorization': `Bearer ${session?.user?.accessToken}`
+        },
+        method: 'PUT'
+      })
+
+      console.log(res)
+      if (res.ok) {
+        if (isLiked) {
+          setIsLiked(prev => !prev)
+          setDonutLikes(prev => prev - 1)
+        } else {
+          setIsLiked(prev => !prev)
+          setDonutLikes(prev => prev + 1)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <section>
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -28,6 +66,11 @@ const DonutCard = ({title, desc, imageUrl, email, authorId, _id}) => {
             <h4>{email}</h4>
             </div>
             </Link>
+            <div >
+            {donutLikes} {" "} {isLiked
+              ? (<AiFillLike onClick={handleLike} size={20} />)
+              : (<AiOutlineLike onClick={handleLike} size={20} />)}
+          </div>
         </div>
         </div>
     </section>

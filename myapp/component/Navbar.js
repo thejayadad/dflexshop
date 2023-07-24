@@ -37,8 +37,8 @@ const Navbar = () => {
           <li>
 
           <details>
-          <summary className='btn btn-sm bg-secondary'>
-            Parent
+          <summary className='bg-secondary'>
+            User: {session.user?.email}
           </summary>
           <ul className="p-2 bg-base-100 flex gap-3">
             <li><Link className='btn' href={'/create-donut'}>Create Donut</Link></li>
