@@ -1,4 +1,8 @@
 import mongoose from 'mongoose';
+import User from '@/models/User';
+import {users, donuts, comments} from "../data/index"
+import Donut from '@/models/Donut';
+import Comment from '@/models/Comment';
 
 const connection = {};
 
@@ -6,14 +10,24 @@ const connection = {};
 
 async function connect() {
     if (connection.isConnected) {
+        console.log(
+            "db connected"
+        )
+        // User.insertMany(users)
+        // Donut.insertMany(donuts)
+        // Comment.insertMany(comments)
         return;
     }
     if (mongoose.connections.length > 0) {
         connection.isConnected = mongoose.connections[0].readyState;
         if (connection.isConnected === 1) {
+         
             return;
+
         }
+
         await mongoose.disconnect();
+
     }
     const db = await mongoose.connect(process.env.MONGO_URL);
     connection.isConnected = db.connections[0].readyState;
@@ -24,6 +38,7 @@ async function disconnect() {
         if (process.env.NODE_ENV === 'production') {
             await mongoose.disconnect();
             connection.isConnected = false;
+            
         }
     }
 }
