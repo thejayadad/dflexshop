@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import DonutCard from "./DonutCard";
-
+import Link from "next/link";
 
 const DonutList = () => {
     const { data: session } = useSession();
@@ -17,16 +17,23 @@ const DonutList = () => {
           setAllDonuts(data);
         };
     
-        if (session?.user.id) fetchDonutts();
+        fetchDonuts();
       }, []);
 
   return (
     <section>
         <div>
             {allDonuts.map((singleDonut) => (
-                <DonutCard
-                {...singleDonut}
-                ></DonutCard>
+                <>
+                <Link
+                href={`/profile/${singleDonut._id}`}
+                >
+                <div key={singleDonut._id}>
+                <p>{singleDonut.title}</p>
+                <h3>{singleDonut.email}</h3>
+                </div>
+                </Link>
+                </>
             ))}
         </div>
     </section>
