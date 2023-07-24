@@ -28,11 +28,13 @@ const DonutList = () => {
                 <Link
                 href={`/profile/${singleDonut._id}`}
                 >
+                  {singleDonut.email}
+                </Link>
                 <div key={singleDonut._id}>
                 <p>{singleDonut.title}</p>
                 <h3>{singleDonut.email}</h3>
                 </div>
-                </Link>
+               
                 </>
             ))}
         </div>

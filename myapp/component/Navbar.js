@@ -10,9 +10,9 @@ const Navbar = () => {
 
   return (
     <header className="navbar bg-base-100 border-b py-5 px-8 flex align-center justify-center">
-  <div className="flex-1">
+  <div className="flex-1 cursor">
     <Link 
-    href={'/'}
+    href={''}
 
     className="btn normal-case text-lg">
      Donut Shop

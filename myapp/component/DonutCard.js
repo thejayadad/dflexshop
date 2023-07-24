@@ -9,11 +9,13 @@ const DonutCard = ({title, desc, imageUrl, email, authorId, _id}) => {
         href={`/profile/${_id}`}
         >
         <div key={_id}>
+          <Link
+          href={`/donut/${_id}`}
+          >
             <p>{title}</p>
             <h3>{desc}</h3>
             <h4>{email}</h4>
-            <h4>{authorId}</h4>
-
+            </Link>
         </div>
         </Link>
         </div>

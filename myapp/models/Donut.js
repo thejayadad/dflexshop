@@ -28,6 +28,7 @@ const DonutSchema = new mongoose.Schema({
     email: {
         type: String
     }
+
 }, {timestamps: true})
 
 export default mongoose?.models?.Donut || mongoose.model("Donut", DonutSchema)
