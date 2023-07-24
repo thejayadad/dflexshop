@@ -6,7 +6,8 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import useFormInput from '@/component/useFormInput'
 import FormInput from '@/component/FormInput'
-
+import { BsFillPencilFill } from 'react-icons/bs'
+import { AiFillDelete, AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai'
 
 const Register = () => {
 
@@ -60,15 +61,28 @@ const Register = () => {
         <div className='bg-gray-100 mt-8'>
         <form onSubmit={handleSubmit}>
         <div className="flex flex-col mb- gap-4">
-
+        <div class="flex relative ">
+        <span class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                   
+                    </span>
                     <FormInput
                     className="form-inputs"
 
                     type="text" placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+                    <div class="flex relative ">
+                    <span class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                   
+                   <AiOutlineUser/>
+               </span>
                     <FormInput 
                     className="form-inputs"
                     type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
-                    <input type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
+                   
+                   </div>
+                   <FormInput
+                    className="form-inputs"
+                    type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
                     <button >Register</button>
                     <button  onClick={() => signIn()}>
                         Don&apos;t have an account? <br /> Register now.
