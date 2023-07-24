@@ -54,10 +54,13 @@ const Register = () => {
 
   return (
     <section>
-        <h2>Register</h2>
-        <div>
+      <h2 className="text-3xl font-semibold mb-6">Login to Donut Shop</h2>
+        <div className='bg-gray-100'>
         <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
+                    <input 
+                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+
+                    type="text" placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
                     <input type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
                     <input type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
                     <button >Register</button>

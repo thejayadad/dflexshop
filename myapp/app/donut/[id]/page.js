@@ -52,11 +52,31 @@ const handleDelete = async () => {
   return (
     <section>
         <h2>Donut Detail</h2>
-        <div key={donutDetails.id}>
-          <p>{donutDetails.title}</p> 
-          <p>{donutDetails.desc}</p>  
+        <div>
+        {
+                        donutDetails?.authorId?._id.toString() === session?.user?._id.toString()
+                            ? (
+                                <div>
+                                    <Link href={`/donut/edit/${ctx.params.id}`}>
+                                        Edit <BsFillPencilFill />
+                                    </Link>
+                                    <button onClick={handleDelete} >
+                                        Delete
+                                        <AiFillDelete />
+                                    </button>
+                                </div>
+                            )
+                            : (
+                                <div >
+                                    Author: <span>{donutDetails?.authorId?.username}</span>
+                                </div>
+                            )
+                    }
+        <div key={donutDetails?.id}>
+          <p>{donutDetails?.title}</p> 
+          <p>{donutDetails?.desc}</p>  
  
-
+        </div>
         </div>
     </section>
   )
