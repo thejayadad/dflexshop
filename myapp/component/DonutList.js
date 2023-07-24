@@ -27,13 +27,13 @@ const DonutList = () => {
 
 
   return (
-    <section>
+    <section className="home-grid">
         <div>
             {allDonuts.map((singleDonut) => (
                 <>
-                <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className="">
               <div
-              className="relative overflow-hidden rounded-lg cursor-pointer transform transition-transform hover:scale-105 cursor"
+              className=""
 
               >
               <img

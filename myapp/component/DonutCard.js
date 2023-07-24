@@ -42,7 +42,7 @@ const DonutCard = ({title, desc, imageUrl, email, authorId, _id, likes}) => {
   }
   return (
     <section>
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="">
         <Link
         href={`/profile/${_id}`}
         >
