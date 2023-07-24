@@ -24,7 +24,7 @@ const Navbar = () => {
 
         {NavLinks.map((link) => (
             <li>
-            <Link className='btn btn-sm mr-3' href={link.href} key={link.text}>
+            <Link className='mr-6' href={link.href} key={link.text}>
                 {link.text}
             </Link>
             </li>
