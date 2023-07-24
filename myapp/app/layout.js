@@ -1,6 +1,7 @@
 import Navbar from '@/component/Navbar'
 import './globals.css'
 import Provider from '@/SessionProvider'
+import Footer from '@/component/Footer'
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,9 +13,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
       < Provider>
-      
-      <Navbar />
+    <div className='container'>
+    <Navbar />
         {children}
+      <Footer />
+    </div>   
+   
       </Provider>
         
       </body>

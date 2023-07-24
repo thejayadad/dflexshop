@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import useFormInput from '@/component/useFormInput'
+import FormInput from '@/component/FormInput'
 
 
 const Register = () => {
@@ -53,24 +54,30 @@ const Register = () => {
 
 
   return (
-    <section>
-      <h2 className="text-3xl font-semibold mb-6">Login to Donut Shop</h2>
-        <div className='bg-gray-100'>
+    <section className='px-3 py-10 w-full'>
+        <div className="shadows">
+      <h2 className="shadows-text">Register to Donut Shop</h2>
+        <div className='bg-gray-100 mt-8'>
         <form onSubmit={handleSubmit}>
-                    <input 
-                    className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        <div className="flex flex-col mb- gap-4">
+
+                    <FormInput
+                    className="form-inputs"
 
                     type="text" placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
-                    <input type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
+                    <FormInput 
+                    className="form-inputs"
+                    type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
                     <input type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
                     <button >Register</button>
                     <button  onClick={() => signIn()}>
                         Don&apos;t have an account? <br /> Register now.
                     </button>
+                    </div>
                 </form>
         </div>
         <ToastContainer />
-
+    </div>
     </section>
   )
 }
