@@ -78,6 +78,7 @@ const handleDelete = async () => {
  
         </div>
         </div>
+        <ToastContainer />
     </section>
   )
 }

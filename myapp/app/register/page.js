@@ -24,8 +24,7 @@ const Register = () => {
         if(password.length < 6){
             toast.error("Password must be at least 6 characters")
             return
-        }
-    
+        }    
         try {
             const res = await fetch('http://localhost:3000/api/register', {
                 headers: {

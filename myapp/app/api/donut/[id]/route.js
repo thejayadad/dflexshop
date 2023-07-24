@@ -8,7 +8,7 @@ export async function GET(req, ctx) {
     const id = ctx.params.id
 
     try {
-        const donut = await Donut.findById(id)
+        const donut = await Donut.findById(id).populate("authorId")
 
         return new Response(JSON.stringify(donut), { status: 200 })
     } catch (error) {

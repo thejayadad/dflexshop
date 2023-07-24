@@ -27,7 +27,7 @@ const DonutList = () => {
                 <>
                 <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               <div
-              className="relative overflow-hidden rounded-lg cursor-pointer transform transition-transform hover:scale-105"
+              className="relative overflow-hidden rounded-lg cursor-pointer transform transition-transform hover:scale-105 cursor"
 
               >
               <img
@@ -39,11 +39,16 @@ const DonutList = () => {
                 <Link
                 href={`/profile/${singleDonut._id}`}
                 >
-                  {singleDonut.email}
+                  Author Profile: {singleDonut.email}
                 </Link>
                 <div key={singleDonut._id}>
                 <p>{singleDonut.title}</p>
                 <h3>{singleDonut.email}</h3>
+                </div>
+                <div>
+                  <p><Link
+                  href={`/donut/${singleDonut._id}`}
+                  >See More</Link></p>
                 </div>
                </div>
                </div>

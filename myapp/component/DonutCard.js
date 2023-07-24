@@ -8,9 +8,11 @@ const DonutCard = ({title, desc, imageUrl, email, authorId, _id}) => {
         <Link
         href={`/profile/${_id}`}
         >
+          Author Page: {email}
+          </Link>
         <div
         className="relative overflow-hidden rounded-lg cursor-pointer transform transition-transform hover:scale-105"
-        key={_id}>
+        key={authorId}>
           <Link
           href={`/donut/${_id}`}
           >
@@ -27,7 +29,6 @@ const DonutCard = ({title, desc, imageUrl, email, authorId, _id}) => {
             </div>
             </Link>
         </div>
-        </Link>
         </div>
     </section>
   )
