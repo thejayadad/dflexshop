@@ -4,16 +4,14 @@ import React, { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import useFormInput from '@/component/useFormInput'
 import FormInput from '@/component/FormInput'
-import { BsFillPencilFill } from 'react-icons/bs'
-import { AiFillDelete, AiOutlineUser, AiFillLike, AiOutlineLike } from 'react-icons/ai'
+import {  AiOutlineUser, AiOutlineSecurityScan, AiOutlineMessage } from 'react-icons/ai'
+import Link from 'next/link'
 
 const Register = () => {
-
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [password, setPassword] = useState("") 
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -58,36 +56,51 @@ const Register = () => {
     <section className='px-3 py-10 w-full'>
         <div className="shadows">
       <h2 className="shadows-text">Register to Donut Shop</h2>
-        <div className='bg-gray-100 mt-8'>
+        <div className='mt-8'>
         <form onSubmit={handleSubmit}>
         <div className="flex flex-col mb- gap-4">
         <div class="flex relative ">
-        <span class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                   
-                    </span>
-                    <FormInput
-                    className="form-inputs"
-
-                    type="text" placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
-                    </div>
-                    <div class="flex relative ">
-                    <span class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
-                   
-                   <AiOutlineUser/>
+        <span class="form-styling">
+            <AiOutlineMessage />
+        </span>
+        <FormInput
+        className="form-inputs"
+        type="text" placeholder='Username...' 
+        onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+        <div class="flex relative ">
+        <span class="form-styling">
+        
+        <AiOutlineUser/>
                </span>
                     <FormInput 
                     className="form-inputs"
-                    type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
+                    type="text" placeholder='Email...' 
+                    onChange={(e) => setEmail(e.target.value)} />
                    
                    </div>
+                   <div class="flex relative ">
+                   <span class="form-styling">
+                   
+                   <AiOutlineSecurityScan />
+               </span>
                    <FormInput
                     className="form-inputs"
-                    type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
-                    <button >Register</button>
-                    <button  onClick={() => signIn()}>
-                        Don&apos;t have an account? <br /> Register now.
-                    </button>
+                    type="password" placeholder='Password...' 
+                    onChange={(e) => setPassword(e.target.value)}  />
+                    
                     </div>
+                    <div className='flex w-full flex-col'>
+                    <button
+                    className='btn btn-secondary'
+                    >Register</button>
+                    <Link
+                    href={'/login'}
+                    onClick={() => signIn()}>
+                        Already Have An Account?<br /> Login Now.
+                    </Link>
+                    </div>
+                  </div>
                 </form>
         </div>
         <ToastContainer />

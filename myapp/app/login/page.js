@@ -6,6 +6,9 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { signIn } from 'next-auth/react'
+import FormInput from '@/component/FormInput'
+import { AiOutlineSecurityScan, AiOutlineMessage } from 'react-icons/ai'
+
 
 
 const Login = () => {
@@ -40,20 +43,49 @@ const Login = () => {
         }
     }
   return (
-    <section>
-        <h2>Login</h2>
-        <div>
-        <form onSubmit={handleSubmit}>
-                    <input type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
-                    <input type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
-                    <button>Log in</button>
-                    <Link  href='/register'>
-                        Don&apos;t have an account? <br /> Register now.
-                    </Link>
-                </form>
-        </div>
-        <ToastContainer />
-    </section>
+    <section className='px-3 py-10 w-full'>
+    <div className="shadows">
+  <h2 className="shadows-text">Login to Donut Shop</h2>
+    <div className='mt-8'>
+    <form onSubmit={handleSubmit}>
+    <div className="flex flex-col mb- gap-4">
+    <div class="flex relative ">
+    <span class="form-styling">
+        <AiOutlineMessage />
+    </span>
+          <FormInput 
+                className="form-inputs"
+                type="text" placeholder='Email...' 
+                onChange={(e) => setEmail(e.target.value)} />
+               
+               </div>
+               <div class="flex relative ">
+               <span class="form-styling">
+               
+               <AiOutlineSecurityScan />
+           </span>
+               <FormInput
+                className="form-inputs"
+                type="password" placeholder='Password...' 
+                onChange={(e) => setPassword(e.target.value)}  />
+                
+                </div>
+                <div className='flex w-full flex-col'>
+                <button
+                className='btn btn-secondary'
+                >Register</button>
+                <Link
+                href={'/register'}
+                >
+                    Need An Account?<br /> Register Now
+                </Link>
+                </div>
+              </div>
+            </form>
+    </div>
+    <ToastContainer />
+</div>
+</section>
   )
 }
 
