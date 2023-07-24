@@ -73,7 +73,7 @@ const Login = () => {
                 <div className='flex w-full flex-col'>
                 <button
                 className='btn btn-secondary'
-                >Register</button>
+                >Login</button>
                 <Link
                 href={'/register'}
                 >
